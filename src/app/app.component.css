@@ -4,23 +4,21 @@
   align-items: center;
   padding: 2rem;
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #2d3748 100%);
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  color: #e2e8f0;
+  background: linear-gradient(135deg, var(--dark-bg), var(--mid-bg), var(--light-bg));
+  color: var(--text-primary);
 }
 
 h1 {
-  color: #64b5f6;
+  color: var(--primary-blue);
   font-size: 2.8rem;
   margin-bottom: 3rem;
-  text-shadow: 0 0 20px rgba(100, 181, 246, 0.3);
+  text-shadow: var(--glow-blue);
   font-weight: 200;
   letter-spacing: 3px;
   text-transform: uppercase;
   text-align: center;
 }
 
-/* Loading Indicator */
 .loading-container {
   display: flex;
   flex-direction: column;
@@ -33,30 +31,20 @@ h1 {
 .loading-spinner {
   width: 60px;
   height: 60px;
-  border: 4px solid rgba(100, 181, 246, 0.2);
-  border-top: 4px solid #64b5f6;
+  border: 4px solid var(--border-color);
+  border-top: 4px solid var(--primary-blue);
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  box-shadow: 0 0 20px rgba(100, 181, 246, 0.3);
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  box-shadow: var(--glow-blue);
 }
 
 .loading-text {
-  color: #90cdf4;
+  color: var(--light-blue);
   font-size: 1.2rem;
   font-weight: 300;
   letter-spacing: 1px;
   text-align: center;
   animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
 }
 
 .calendar-grid {
@@ -71,92 +59,40 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 0.8rem;
-  /* Remove flex-wrap to prevent wrapping to more than 2 rows */
 }
 
 .day-square {
   width: 120px;
   height: 120px;
-  background: linear-gradient(145deg, #1e2a3a 0%, #2d3748 100%);
-  border: 1px solid rgba(100, 181, 246, 0.2);
+  background: linear-gradient(145deg, var(--card-bg), var(--light-bg));
+  border: 1px solid var(--border-color);
   border-radius: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 
-    0 4px 15px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
   position: relative;
   cursor: pointer;
-  backdrop-filter: blur(10px);
-}
-
-.day-square::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
-  padding: 1px;
-  background: linear-gradient(145deg, rgba(100, 181, 246, 0.3), rgba(100, 181, 246, 0.1));
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: xor;
-  opacity: 0;
-  transition: opacity 0.3s ease;
 }
 
 .day-square:hover {
   transform: translateY(-8px) scale(1.02);
-  border-color: rgba(100, 181, 246, 0.5);
-  box-shadow: 
-    0 12px 30px rgba(0, 0, 0, 0.4),
-    0 0 30px rgba(100, 181, 246, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-.day-square:hover::before {
-  opacity: 1;
+  border-color: var(--primary-blue);
+  box-shadow: var(--shadow-lg), var(--glow-blue);
 }
 
 .day-square.today {
-  background: linear-gradient(145deg, #1565c0 0%, #42a5f5 100%);
+  background: linear-gradient(145deg, #1565c0, var(--primary-blue));
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
-  box-shadow: 
-    0 8px 25px rgba(21, 101, 192, 0.4),
-    0 0 40px rgba(66, 165, 245, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-.day-square.today:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 
-    0 15px 35px rgba(21, 101, 192, 0.5),
-    0 0 50px rgba(66, 165, 245, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: var(--shadow-lg), var(--glow-blue);
 }
 
 .day-square.week-start {
   margin-left: 1rem;
-  border-left: 3px solid #64b5f6;
-  box-shadow: 
-    0 4px 15px rgba(0, 0, 0, 0.3),
-    -8px 0 15px rgba(100, 181, 246, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.day-square.week-start::after {
-  content: '';
-  position: absolute;
-  left: -8px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 50px;
-  background: linear-gradient(to bottom, #64b5f6, #42a5f5);
-  border-radius: 2px;
-  box-shadow: 0 0 10px rgba(100, 181, 246, 0.5);
+  border-left: 3px solid var(--primary-blue);
 }
 
 .day-name {
@@ -165,7 +101,7 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 8px;
-  color: #90cdf4;
+  color: var(--light-blue);
   opacity: 0.8;
 }
 
@@ -173,7 +109,7 @@ h1 {
   font-size: 2.2rem;
   font-weight: 300;
   margin-bottom: 4px;
-  color: #e2e8f0;
+  color: var(--text-primary);
 }
 
 .month-name {
@@ -181,7 +117,7 @@ h1 {
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #90cdf4;
+  color: var(--light-blue);
   opacity: 0.6;
 }
 
@@ -190,122 +126,70 @@ h1 {
 .day-square.today .month-name {
   color: white;
   opacity: 1;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Date LEDs (5 indicators per date) */
 .date-leds {
   position: absolute;
   top: 8px;
   right: 8px;
   display: flex;
-  flex-direction: column;
   gap: 2px;
 }
 
 .date-led {
-  width: 8px;
-  height: 8px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .date-led-off {
-  background: #374151;
-  border: 1px solid #4b5563;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .date-led-on {
-  background: radial-gradient(circle, #64b5f6 0%, #42a5f5 70%);
-  border: 1px solid #64b5f6;
-  box-shadow: 
-    0 0 8px rgba(100, 181, 246, 0.6),
-    0 0 16px rgba(100, 181, 246, 0.3);
+  background: var(--primary-blue);
+  box-shadow: 0 0 8px var(--primary-blue);
   animation: ledPulse 2s infinite;
 }
 
 @keyframes ledPulse {
-  0%, 100% { 
-    box-shadow: 
-      0 0 8px rgba(100, 181, 246, 0.6),
-      0 0 16px rgba(100, 181, 246, 0.3);
-  }
-  50% { 
-    box-shadow: 
-      0 0 12px rgba(100, 181, 246, 0.8),
-      0 0 24px rgba(100, 181, 246, 0.5);
-  }
+  0%, 100% { opacity: 0.8; box-shadow: 0 0 8px var(--primary-blue); }
+  50% { opacity: 1; box-shadow: 0 0 15px var(--primary-blue); }
 }
 
-/* Full Screen Date View */
 .full-screen-date {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 70vh;
+  background: linear-gradient(135deg, var(--dark-bg), var(--mid-bg));
 }
 
 .mega-day-square {
   width: 400px;
   height: 400px;
-  background: linear-gradient(145deg, #1e2a3a 0%, #2d3748 100%);
-  border: 2px solid rgba(100, 181, 246, 0.4);
+  background: linear-gradient(145deg, #1565c0, var(--primary-blue));
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.4),
-    0 0 80px rgba(100, 181, 246, 0.3),
-    inset 0 2px 0 rgba(255, 255, 255, 0.1);
-  cursor: pointer;
-  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(21, 101, 192, 0.6), var(--glow-blue);
   animation: megaPulse 3s infinite;
-  position: relative;
-  overflow: hidden;
-}
-
-.mega-day-square::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 32px;
-  background: linear-gradient(45deg, 
-    rgba(100, 181, 246, 0.1) 0%, 
-    rgba(100, 181, 246, 0.3) 50%, 
-    rgba(100, 181, 246, 0.1) 100%);
-  animation: shimmer 2s infinite;
+  color: white;
 }
 
 @keyframes megaPulse {
-  0%, 100% { 
-    transform: scale(1);
-    box-shadow: 
-      0 20px 60px rgba(0, 0, 0, 0.4),
-      0 0 80px rgba(100, 181, 246, 0.3),
-      inset 0 2px 0 rgba(255, 255, 255, 0.1);
-  }
-  50% { 
-    transform: scale(1.02);
-    box-shadow: 
-      0 25px 70px rgba(0, 0, 0, 0.5),
-      0 0 100px rgba(100, 181, 246, 0.4),
-      inset 0 2px 0 rgba(255, 255, 255, 0.15);
-  }
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-.mega-day-square.today {
-  background: linear-gradient(145deg, #1565c0 0%, #42a5f5 100%);
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  color: white;
+  0%, 100% { transform: scale(1); box-shadow: 0 20px 60px rgba(21, 101, 192, 0.6), var(--glow-blue); }
+  50% { transform: scale(1.05); box-shadow: 0 30px 80px rgba(21, 101, 192, 0.8), 0 0 60px var(--primary-blue); }
 }
 
 .mega-day-name {
@@ -313,17 +197,14 @@ h1 {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 4px;
-  margin-bottom: 16px;
-  color: #90cdf4;
-  z-index: 1;
+  margin-bottom: 1rem;
+  opacity: 0.9;
 }
 
 .mega-day-number {
   font-size: 8rem;
-  font-weight: 100;
-  margin-bottom: 16px;
-  color: #e2e8f0;
-  z-index: 1;
+  font-weight: 200;
+  margin-bottom: 1rem;
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -331,50 +212,31 @@ h1 {
   font-size: 1.2rem;
   font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #90cdf4;
-  margin-bottom: 24px;
-  z-index: 1;
+  letter-spacing: 3px;
+  opacity: 0.8;
 }
 
 .mega-celebration {
-  font-size: 1.4rem;
+  margin-top: 2rem;
+  font-size: 2rem;
   font-weight: 600;
-  color: #64b5f6;
-  text-align: center;
-  letter-spacing: 2px;
-  z-index: 1;
-  animation: celebrate 1.5s infinite alternate;
+  color: #ffd700;
+  text-shadow: 0 0 20px #ffd700;
+  animation: celebrate 2s infinite;
 }
 
 @keyframes celebrate {
-  from { 
-    transform: scale(1);
-    text-shadow: 0 0 20px rgba(100, 181, 246, 0.5);
-  }
-  to { 
-    transform: scale(1.05);
-    text-shadow: 0 0 30px rgba(100, 181, 246, 0.8);
-  }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
 
-.mega-day-square.today .mega-day-name,
-.mega-day-square.today .mega-day-number,
-.mega-day-square.today .mega-month-name,
-.mega-day-square.today .mega-celebration {
-  color: white;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Modal Styles */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(8px);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -382,369 +244,131 @@ h1 {
   animation: fadeIn 0.3s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 .modal-content {
-  background: linear-gradient(145deg, #1e2a3a 0%, #2d3748 100%);
-  border: 1px solid rgba(100, 181, 246, 0.3);
+  background: linear-gradient(145deg, var(--card-bg), var(--light-bg));
   border-radius: 20px;
-  min-width: 400px;
-  max-width: 90vw;
-  box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(100, 181, 246, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: var(--shadow-lg), var(--glow-blue);
   animation: slideIn 0.3s ease;
-}
-
-@keyframes slideIn {
-  from { 
-    opacity: 0;
-    transform: translateY(-50px) scale(0.9);
-  }
-  to { 
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 2rem;
-  border-bottom: 1px solid rgba(100, 181, 246, 0.2);
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
 }
 
 .modal-header h2 {
-  color: #64b5f6;
+  color: var(--primary-blue);
   font-size: 1.5rem;
   font-weight: 300;
   margin: 0;
-  text-transform: capitalize;
-  letter-spacing: 1px;
 }
 
 .close-button {
   background: none;
   border: none;
-  color: #90cdf4;
-  font-size: 2rem;
+  color: var(--light-blue);
+  font-size: 1.5rem;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  transition: var(--transition);
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
 }
 
 .close-button:hover {
-  background: rgba(100, 181, 246, 0.1);
-  color: #64b5f6;
-  transform: rotate(90deg);
-}
-
-.modal-body {
-  padding: 2rem;
+  color: var(--primary-blue);
+  transform: scale(1.1);
 }
 
 .modal-body h3 {
-  color: #e2e8f0;
+  color: var(--text-primary);
   font-size: 1.2rem;
-  font-weight: 400;
-  margin: 0 0 1.5rem 0;
-  text-align: center;
+  font-weight: 300;
+  margin-bottom: 1rem;
 }
 
 .players-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.8rem;
 }
 
 .player-option {
   display: flex;
   align-items: center;
-  padding: 1rem 1.5rem;
-  background: linear-gradient(145deg, #0f1419 0%, #1a2332 100%);
-  border: 1px solid rgba(100, 181, 246, 0.1);
+  gap: 1rem;
+  padding: 1rem;
+  background: linear-gradient(145deg, rgba(30, 42, 58, 0.6), rgba(45, 55, 72, 0.6));
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  gap: 1rem;
+  transition: var(--transition);
 }
 
 .player-option:hover {
-  border-color: rgba(100, 181, 246, 0.3);
-  background: linear-gradient(145deg, #1a2332 0%, #2d3748 100%);
-  transform: translateX(5px);
+  border-color: var(--primary-blue);
+  background: linear-gradient(145deg, rgba(30, 42, 58, 0.8), rgba(45, 55, 72, 0.8));
 }
 
 .led-indicator {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  transition: all 0.3s ease;
-  position: relative;
-  flex-shrink: 0;
+  transition: var(--transition);
 }
 
 .led-off {
-  background: #374151;
-  border: 2px solid #4b5563;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .led-on {
-  background: radial-gradient(circle, #64b5f6 0%, #42a5f5 70%);
-  border: 2px solid #64b5f6;
-  box-shadow: 
-    0 0 20px rgba(100, 181, 246, 0.6),
-    0 0 40px rgba(100, 181, 246, 0.3),
-    inset 0 1px 2px rgba(255, 255, 255, 0.3);
-  animation: ledPulse 2s infinite;
+  background: var(--primary-blue);
+  border: 1px solid var(--primary-blue);
+  box-shadow: 0 0 10px var(--primary-blue);
 }
 
 .player-name {
-  color: #e2e8f0;
-  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-size: 1rem;
   font-weight: 400;
-  letter-spacing: 0.5px;
 }
 
-.player-option:hover .player-name {
-  color: #64b5f6;
-}
-
-/* Responsive Design - Maintain 2 rows at all costs */
-@media (max-width: 1024px) {
-  .day-square {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .calendar-row {
-    gap: 0.6rem;
-  }
-  
-  .day-number {
-    font-size: 1.8rem;
-  }
-
-  .modal-content {
-    min-width: 350px;
-  }
-
-  .mega-day-square {
-    width: 350px;
-    height: 350px;
-  }
-
-  .mega-day-number {
-    font-size: 6rem;
-  }
-
-  .loading-spinner {
-    width: 50px;
-    height: 50px;
-  }
-
-  .loading-text {
-    font-size: 1.1rem;
-  }
-}
-
+/* Responsive Design */
 @media (max-width: 768px) {
-  .calendar-container {
-    padding: 1rem;
-  }
-  
-  h1 {
-    font-size: 2.2rem;
-    margin-bottom: 2rem;
-    letter-spacing: 2px;
-  }
-  
-  .day-square {
-    width: 85px;
-    height: 85px;
-  }
-  
-  .calendar-row {
-    gap: 0.4rem;
-  }
-  
-  .day-square.week-start {
-    margin-left: 0.6rem;
-  }
-  
-  .day-number {
-    font-size: 1.6rem;
-  }
-  
-  .day-name {
-    font-size: 0.65rem;
-  }
-
-  .modal-content {
-    min-width: 300px;
-    margin: 1rem;
-  }
-
-  .modal-header, .modal-body {
-    padding: 1rem 1.5rem;
-  }
-
-  .mega-day-square {
-    width: 300px;
-    height: 300px;
-  }
-
-  .mega-day-number {
-    font-size: 5rem;
-  }
-
-  .mega-celebration {
-    font-size: 1.1rem;
-  }
-
-  .loading-spinner {
-    width: 45px;
-    height: 45px;
-  }
-
-  .loading-text {
-    font-size: 1rem;
-  }
+  .calendar-container { padding: 1rem; }
+  h1 { font-size: 2rem; margin-bottom: 2rem; }
+  .day-square { width: 90px; height: 90px; }
+  .calendar-row { gap: 0.5rem; }
+  .day-square.week-start { margin-left: 0.5rem; }
+  .day-number { font-size: 1.8rem; }
+  .day-name { font-size: 0.65rem; }
+  .modal-content { padding: 1.5rem; margin: 1rem; }
+  .mega-day-square { width: 280px; height: 280px; }
+  .mega-day-number { font-size: 5rem; }
 }
 
-@media (max-width: 600px) {
-  .day-square {
-    width: 70px;
-    height: 70px;
-  }
-  
-  .calendar-row {
-    gap: 0.3rem;
-  }
-  
-  .day-number {
-    font-size: 1.4rem;
-  }
-  
-  .day-name {
-    font-size: 0.6rem;
-  }
-  
-  .month-name {
-    font-size: 0.55rem;
-  }
-  
-  .day-square.week-start {
-    margin-left: 0.4rem;
-  }
-
-  .date-leds {
-    gap: 1px;
-  }
-
-  .date-led {
-    width: 6px;
-    height: 6px;
-  }
-
-  .modal-content {
-    min-width: 280px;
-  }
-
-  .mega-day-square {
-    width: 250px;
-    height: 250px;
-  }
-
-  .mega-day-number {
-    font-size: 4rem;
-  }
-
-  .loading-spinner {
-    width: 40px;
-    height: 40px;
-  }
-
-  .loading-text {
-    font-size: 0.9rem;
-  }
-}
-
-/* Ultra small screens - still maintain 2 rows */
 @media (max-width: 480px) {
-  .day-square {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .calendar-row {
-    gap: 0.2rem;
-  }
-  
-  .day-number {
-    font-size: 1.2rem;
-  }
-  
-  .day-name {
-    font-size: 0.55rem;
-    margin-bottom: 4px;
-  }
-  
-  .month-name {
-    font-size: 0.5rem;
-  }
-  
-  .day-square.week-start {
-    margin-left: 0.3rem;
-  }
-
-  .date-led {
-    width: 5px;
-    height: 5px;
-  }
-
-  .modal-content {
-    min-width: 260px;
-  }
-
-  .player-option {
-    padding: 0.8rem 1rem;
-  }
-
-  .player-name {
-    font-size: 1rem;
-  }
-
-  .mega-day-square {
-    width: 200px;
-    height: 200px;
-  }
-
-  .mega-day-number {
-    font-size: 3rem;
-  }
-
-  .mega-celebration {
-    font-size: 0.9rem;
-  }
-
-  .loading-spinner {
-    width: 35px;
-    height: 35px;
-  }
-
-  .loading-text {
-    font-size: 0.8rem;
-  }
+  .day-square { width: 70px; height: 70px; }
+  .calendar-row { gap: 0.3rem; }
+  .day-number { font-size: 1.4rem; }
+  .day-name { font-size: 0.6rem; margin-bottom: 4px; }
+  .month-name { font-size: 0.6rem; }
+  .day-square.week-start { margin-left: 0.3rem; }
+  .date-led { width: 3px; height: 3px; }
+  .modal-content { padding: 1rem; }
+  .player-option { padding: 0.8rem; }
+  .player-name { font-size: 0.9rem; }
+  .mega-day-square { width: 220px; height: 220px; }
+  .mega-day-number { font-size: 4rem; }
+  .mega-celebration { font-size: 1.5rem; }
 }
