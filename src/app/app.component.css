@@ -54,22 +54,22 @@ h1 {
   gap: 0.8rem;
 }
 
-/* Portrait: 3 columns layout */
+/* Portrait: 4 columns layout */
 @media (orientation: portrait) and (max-width: 768px) {
-  .calendar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .calendar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; }
   .calendar-row { display: contents; }
   .calendar-container { padding: 1rem; }
-  .day-square { width: calc(33vw - 2rem); height: calc(33vw - 2rem); max-width: 110px; max-height: 110px; min-width: 80px; min-height: 80px; }
+  .day-square { width: calc(25vw - 1.5rem); height: calc(25vw - 1.5rem); max-width: 90px; max-height: 90px; min-width: 70px; min-height: 70px; }
   .day-square.week-start { margin-left: 0; border-left: 3px solid var(--primary-blue); }
-  .day-number { font-size: clamp(1.2rem, 4vw, 1.8rem); }
-  .day-name { font-size: clamp(0.6rem, 2vw, 0.75rem); }
-  .month-name { font-size: clamp(0.55rem, 1.8vw, 0.7rem); }
+  .day-number { font-size: clamp(1rem, 3.5vw, 1.6rem); }
+  .day-name { font-size: clamp(0.55rem, 1.8vw, 0.7rem); }
+  .month-name { font-size: clamp(0.5rem, 1.6vw, 0.65rem); }
 }
 
 @media (orientation: portrait) and (max-width: 480px) {
   .calendar-container { padding: 0.5rem; }
-  .day-square { width: calc(33vw - 1.5rem); height: calc(33vw - 1.5rem); max-width: 95px; max-height: 95px; min-width: 70px; min-height: 70px; }
-  .calendar-grid { gap: 0.8rem; }
+  .day-square { width: calc(25vw - 1.2rem); height: calc(25vw - 1.2rem); max-width: 80px; max-height: 80px; min-width: 60px; min-height: 60px; }
+  .calendar-grid { gap: 0.6rem; }
 }
 
 .day-square {
