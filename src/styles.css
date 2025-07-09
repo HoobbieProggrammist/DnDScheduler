@@ -38,6 +38,8 @@ app-root {
   --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.4);
   --glow-blue: 0 0 20px rgba(100, 181, 246, 0.3);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --border-radius: 16px;
+  --modal-border-radius: 20px;
 }
 
 /* Common animations */
@@ -58,4 +60,41 @@ app-root {
 @keyframes slideIn {
   from { transform: translateY(-20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes ledPulse {
+  0%, 100% { opacity: 0.8; box-shadow: 0 0 8px var(--primary-blue); }
+  50% { opacity: 1; box-shadow: 0 0 15px var(--primary-blue); }
+}
+
+@keyframes celebrate {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes megaPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); box-shadow: 0 30px 80px rgba(21, 101, 192, 0.8); }
+}
+
+/* Common component styles */
+.btn-reset {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-center {
+  text-align: center;
 }
