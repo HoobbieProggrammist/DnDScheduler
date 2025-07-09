@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles - Remove white borders and ensure full coverage */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #2d3748 100%);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Ensure app root takes full height */
+app-root {
+  display: block;
+  min-height: 100vh;
+  width: 100%;
+}
