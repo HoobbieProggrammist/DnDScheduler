@@ -1,6 +1,6 @@
 <div class="calendar-container">
   <h1 *ngIf="!isLoading">
-    {{ shouldShowFullScreenDate() ? "S'PAZEAA" : "DnD pazzo napoli quando?" }}
+    {{ shouldShowDateOverlay() ? "S'PAZEAA" : "DnD pazzo napoli quando?" }}
   </h1>
   
   <!-- Loading Indicator -->
@@ -11,20 +11,15 @@
   
   <!-- Main Content (when not loading) -->
   <div *ngIf="!isLoading">
-    <!-- Full Screen Date View (when one date has all 5 players) -->
-    <div *ngIf="shouldShowFullScreenDate()" class="full-screen-date">
-      <div class="mega-day-square" 
-           [class.today]="getFullySelectedDate()?.isToday"
-           (click)="openModal(getFullySelectedDate()!)">
-        <div class="mega-day-name">{{ getFullySelectedDate()?.dayName }}</div>
-        <div class="mega-day-number">{{ getFullySelectedDate()?.dayNumber }}</div>
-        <div class="mega-month-name">{{ getFullySelectedDate()?.monthName }}</div>
-        <div class="mega-celebration">🎲 SESSIONE CONFERMATA! 🎲</div>
-      </div>
-    </div>
-    
-    <!-- Normal Calendar Grid (when no date has all 5 players) -->
-    <div *ngIf="!shouldShowFullScreenDate()" class="calendar-grid">
+    <!-- Date Overlay Component (when closest date has all 5 players) -->
+    <app-big-date-overlay 
+      *ngIf="shouldShowDateOverlay()" 
+      [selectedDate]="getClosestFullySelectedDate()"
+      (dateClicked)="onOverlayDateClick($event)">
+    </app-big-date-overlay>
+
+    <!-- Normal Calendar Grid (always visible) -->
+    <div class="calendar-grid">
       <!-- First Row (Days 1-7) -->
       <div class="calendar-row">
         <div *ngFor="let day of calendarDays.slice(0, 7); let i = index" 

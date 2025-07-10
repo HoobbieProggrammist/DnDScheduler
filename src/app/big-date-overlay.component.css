@@ -1,0 +1,109 @@
+.date-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.mega-day-square {
+  width: min(400px, 80vw);
+  height: min(400px, 80vw);
+  max-width: 400px;
+  max-height: 400px;
+  background: linear-gradient(145deg, #1565c0, var(--primary-blue));
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: clamp(16px, 4vw, 32px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(33, 150, 243, 0.4);
+  animation: megaPulse 3s infinite;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  backdrop-filter: blur(2px);
+  padding: clamp(1rem, 3vw, 2rem);
+  box-sizing: border-box;
+}
+
+.mega-day-name {
+  font-size: clamp(0.8rem, 3vw, 1.2rem);
+  text-transform: uppercase;
+  letter-spacing: clamp(1px, 0.5vw, 3px);
+  opacity: 0.9;
+  margin-bottom: clamp(4px, 1vw, 8px);
+  line-height: 1.2;
+}
+
+.mega-day-number {
+  font-size: clamp(3rem, 12vw, 8rem);
+  font-weight: bold;
+  margin-bottom: clamp(4px, 1vw, 8px);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  line-height: 0.9;
+}
+
+.mega-month-name {
+  font-size: clamp(0.7rem, 2.5vw, 1rem);
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-bottom: clamp(10px, 2vw, 20px);
+  line-height: 1.2;
+}
+
+.mega-celebration {
+  font-size: clamp(1rem, 4vw, 1.8rem);
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  animation: celebrationGlow 2s infinite;
+  line-height: 1.3;
+  text-align: center;
+  word-break: break-word;
+}
+
+@keyframes megaPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@keyframes celebrationGlow {
+  0%, 100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.7); }
+  50% { text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(33, 150, 243, 0.8); }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .date-overlay {
+    margin-bottom: 1.5rem;
+  }
+  
+  .mega-day-square { 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(33, 150, 243, 0.4);
+    min-width: 280px;
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .date-overlay {
+    margin-bottom: 1rem;
+  }
+  
+  .mega-day-square { 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(33, 150, 243, 0.4);
+    min-width: 200px;
+    min-height: 200px;
+    border-radius: clamp(12px, 3vw, 20px);
+  }
+}
+
+@media (max-width: 360px) {
+  .mega-day-square {
+    min-width: 180px;
+    min-height: 180px;
+    padding: clamp(0.5rem, 2vw, 1rem);
+  }
+} 

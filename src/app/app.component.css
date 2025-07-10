@@ -165,65 +165,11 @@ h1 {
 
 
 
-.full-screen-date {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1000;
-  background: linear-gradient(135deg, var(--dark-bg), var(--mid-bg));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.mega-day-square {
-  width: 400px;
-  height: 400px;
-  background: linear-gradient(145deg, #1565c0, var(--primary-blue));
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 32px;
-  box-shadow: var(--shadow-lg);
-  animation: megaPulse 3s infinite;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
 
 
 
-.mega-day-name {
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  margin-bottom: 1rem;
-  opacity: 0.9;
-}
 
-.mega-day-number {
-  font-size: 8rem;
-  margin-bottom: 1rem;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
 
-.mega-month-name {
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  opacity: 0.8;
-}
-
-.mega-celebration {
-  margin-top: 2rem;
-  font-size: 2rem;
-  color: #ffd700;
-  animation: celebrate 2s infinite;
-}
 
 
 
@@ -340,8 +286,7 @@ h1 {
   .day-number { font-size: 1.6rem; }
   .day-name { font-size: 0.65rem; }
   .modal-content { padding: 1.5rem; margin: 1rem; max-height: 80vh; overflow-y: auto; }
-  .mega-day-square { width: 280px; height: 280px; }
-  .mega-day-number { font-size: 5rem; }
+
 }
 
 
@@ -358,9 +303,7 @@ h1 {
   .modal-content { padding: 1rem; margin: 0.5rem; max-height: 85vh; overflow-y: auto; }
   .player-option { padding: 0.6rem; }
   .player-name { font-size: 0.85rem; }
-  .mega-day-square { width: 200px; height: 200px; }
-  .mega-day-number { font-size: 3.5rem; }
-  .mega-celebration { font-size: 1.2rem; }
+
 }
 
 

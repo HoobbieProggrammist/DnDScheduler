@@ -1,26 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SupabaseService } from './supabase.service';
-
-interface CalendarDay {
-  date: Date;
-  dayName: string;
-  dayNumber: number;
-  monthName: string;
-  isToday: boolean;
-  isWeekStart: boolean;
-  dateKey: string;
-}
-
-interface PlayerSelection {
-  [dateKey: string]: {
-    [playerName: string]: boolean;
-  };
-}
+import { BigDateOverlayComponent } from './big-date-overlay.component';
+import { CalendarDay, PlayerSelection } from './shared/types';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule],
+  imports: [CommonModule, BigDateOverlayComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -161,19 +147,24 @@ export class AppComponent implements OnInit {
     return this.getSelectedPlayersCount(day) === 5;
   }
 
-  // Get the date that has all players selected (if any)
-  getFullySelectedDate(): CalendarDay | null {
+  // Get the closest date that has all players selected (if any)
+  getClosestFullySelectedDate(): CalendarDay | null {
     return this.calendarDays.find(day => this.hasAllPlayersSelected(day)) || null;
   }
 
-  // Check if we should show the special full-screen view
-  shouldShowFullScreenDate(): boolean {
-    return this.getFullySelectedDate() !== null;
+  // Check if we should show the overlay with the closest fully selected date
+  shouldShowDateOverlay(): boolean {
+    return this.getClosestFullySelectedDate() !== null;
   }
 
   // Get LED states for a date (5 LEDs, lit based on selection count)
   getLedStates(day: CalendarDay): boolean[] {
     const selectedCount = this.getSelectedPlayersCount(day);
     return Array.from({ length: 5 }, (_, index) => index < selectedCount);
+  }
+
+  // Handle date click from the big date overlay component
+  onOverlayDateClick(day: CalendarDay): void {
+    this.openModal(day);
   }
 }
