@@ -98,3 +98,12 @@ app-root {
 .text-center {
   text-align: center;
 }
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
