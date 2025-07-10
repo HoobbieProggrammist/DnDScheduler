@@ -1,0 +1,247 @@
+.registration-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--dark-bg), var(--mid-bg), var(--light-bg));
+  color: var(--text-primary);
+}
+
+.registration-card {
+  background: linear-gradient(145deg, var(--card-bg), var(--light-bg));
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg), var(--glow-blue);
+  padding: 3rem;
+  max-width: 600px;
+  width: 100%;
+  animation: slideIn 0.5s ease;
+}
+
+.registration-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.registration-header h1 {
+  color: var(--primary-blue);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  text-shadow: var(--glow-blue);
+  letter-spacing: 2px;
+}
+
+.registration-header p {
+  color: var(--light-blue);
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.form-group label {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.form-input {
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background: rgba(30, 42, 58, 0.6);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+}
+
+.form-input.error {
+  border-color: #f44336;
+  box-shadow: 0 0 10px rgba(244, 67, 54, 0.3);
+}
+
+.participants-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.participant-row {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.participant-input {
+  flex: 1;
+  padding: 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background: rgba(30, 42, 58, 0.6);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.participant-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 8px rgba(33, 150, 243, 0.3);
+}
+
+.participant-input.error {
+  border-color: #f44336;
+  box-shadow: 0 0 8px rgba(244, 67, 54, 0.3);
+}
+
+.remove-button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: #f44336;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-button:hover {
+  background: #d32f2f;
+  transform: scale(1.1);
+}
+
+.add-participant-button {
+  padding: 0.8rem 1.5rem;
+  border: 1px dashed var(--primary-blue);
+  border-radius: var(--border-radius);
+  background: transparent;
+  color: var(--primary-blue);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 0.5rem;
+}
+
+.add-participant-button:hover:not(:disabled) {
+  background: rgba(33, 150, 243, 0.1);
+  border-style: solid;
+}
+
+.add-participant-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #f44336;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.create-button {
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: var(--border-radius);
+  background: linear-gradient(145deg, var(--primary-blue), #1976d2);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  min-width: 180px;
+}
+
+.create-button:hover:not(:disabled) {
+  background: linear-gradient(145deg, #1976d2, var(--primary-blue));
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.create-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .registration-container {
+    padding: 1rem;
+  }
+  
+  .registration-card {
+    padding: 2rem;
+  }
+  
+  .registration-header h1 {
+    font-size: 2rem;
+  }
+  
+  .participant-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .remove-button {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .registration-card {
+    padding: 1.5rem;
+  }
+  
+  .registration-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .form-input,
+  .participant-input {
+    padding: 0.8rem;
+  }
+  
+  .create-button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+} 
